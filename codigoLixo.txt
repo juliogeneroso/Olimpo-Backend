@@ -1,0 +1,77 @@
+/*let { viewValue, bloco, num, obs } = req.body;
+    let registro = {
+        viewValue,
+        bloco,
+        num,
+        obs
+    };
+    connection.query(`INSERT INTO entregas_concluidas (viewValue,bloco,num,obs,hora,dia) VALUES 
+    ('${registro.viewValue}','${registro.bloco}',${registro.num},'${registro.obs}',now(),now())`,function(err, result){
+        if(err){
+            return err;
+        }
+       // console.log("salvou concluidas");
+    });
+    connection.query(`DELETE FROM entregas_pendentes WHERE viewValue='${registro.viewValue}' AND bloco='${registro.bloco}' AND num='${registro.num}';`,function(err,result){
+        if (err){
+            return err;
+        }
+        //console.log("apagou");
+    });
+    return res.json(registro);
+    });*/
+
+
+
+    /* Comandos Mysql 
+Mysql no prompt de comando: 
+
+mysql -h localhost -u root -p 
+
+
+criar usuario Mysql 
+
+CREATE USER 'novousuario'@'localhost' IDENTIFIED WITH mysql_native_password BY 'passoword';
+
+liberar permissoes ao novo usuario:
+
+GRANT ALL PRIVILEGES ON *.* TO 'novousuario'@'localhost';
+
+*/
+//https://www.youtube.com/watch?v=5JnPd_YckQw
+
+
+ /*let { viewValue, bloco, num, obs } = req.body;
+        let registro = {
+            viewValue,
+            bloco,
+            num,
+            obs
+        };
+        connection.query(`INSERT INTO entregas_pendentes (viewValue,bloco,num,obs) VALUES 
+        ('${registro.viewValue}','${registro.bloco}',${registro.num},'${registro.obs}')`,function(err, result){
+            if(err){
+                return err;
+            }
+        return res.json(registro);
+        });   
+    });*/
+
+    /*let { viewValueEntrada, nomeCompleto, bloco, casa } = req.body;
+let registro = {
+    viewValueEntrada,
+    nomeCompleto,
+    bloco,
+    casa
+};
+connection.query(`INSERT INTO entrada (nome,tipo,bloco,num,hora,dia) VALUES 
+('${registro.nomeCompleto}','${registro.viewValueEntrada}','${registro.bloco}',${registro.casa},now(),now())`,function(err, result){
+      if(err){
+        return err;
+    }
+console.log("foi");
+return res.json(registro);
+});
+     
+});*/
+
