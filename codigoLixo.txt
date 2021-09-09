@@ -1,28 +1,3 @@
-/*let { viewValue, bloco, num, obs } = req.body;
-    let registro = {
-        viewValue,
-        bloco,
-        num,
-        obs
-    };
-    connection.query(`INSERT INTO entregas_concluidas (viewValue,bloco,num,obs,hora,dia) VALUES 
-    ('${registro.viewValue}','${registro.bloco}',${registro.num},'${registro.obs}',now(),now())`,function(err, result){
-        if(err){
-            return err;
-        }
-       // console.log("salvou concluidas");
-    });
-    connection.query(`DELETE FROM entregas_pendentes WHERE viewValue='${registro.viewValue}' AND bloco='${registro.bloco}' AND num='${registro.num}';`,function(err,result){
-        if (err){
-            return err;
-        }
-        //console.log("apagou");
-    });
-    return res.json(registro);
-    });*/
-
-
-
     /* Comandos Mysql 
 Mysql no prompt de comando: 
 
@@ -40,38 +15,89 @@ GRANT ALL PRIVILEGES ON *.* TO 'novousuario'@'localhost';
 */
 //https://www.youtube.com/watch?v=5JnPd_YckQw
 
+select nome from users;
 
- /*let { viewValue, bloco, num, obs } = req.body;
-        let registro = {
-            viewValue,
-            bloco,
-            num,
-            obs
-        };
-        connection.query(`INSERT INTO entregas_pendentes (viewValue,bloco,num,obs) VALUES 
-        ('${registro.viewValue}','${registro.bloco}',${registro.num},'${registro.obs}')`,function(err, result){
-            if(err){
-                return err;
-            }
-        return res.json(registro);
-        });   
-    });*/
+CREATE TABLE moradores(
+nome VARCHAR(50) NOT NULL,
+id INT NOT NULL auto_increment primary KEY,
+bloco CHAR(1),
+num int
+ );
+ INSERT INTO moradores (nome,id,bloco,num,ramal) VALUES ('julio',default,'C',12,'1234');
 
-    /*let { viewValueEntrada, nomeCompleto, bloco, casa } = req.body;
-let registro = {
-    viewValueEntrada,
-    nomeCompleto,
-    bloco,
-    casa
-};
-connection.query(`INSERT INTO entrada (nome,tipo,bloco,num,hora,dia) VALUES 
-('${registro.nomeCompleto}','${registro.viewValueEntrada}','${registro.bloco}',${registro.casa},now(),now())`,function(err, result){
-      if(err){
-        return err;
-    }
-console.log("foi");
-return res.json(registro);
-});
-     
-});*/
+ALTER TABLE moradores ADD ramal VARCHAR(4) NOT NULL;
+
+CREATE TABLE entrada(
+nome VARCHAR(100),
+tipo VARCHAR(20),
+bloco CHAR(1),
+num INT,
+hora TIME,
+dia DATE);
+
+CREATE TABLE saida(
+nome VARCHAR(100),
+tipo VARCHAR(20),
+bloco CHAR(1),
+num INT,
+hora TIME,
+dia DATE);
+
+CREATE TABLE entregas_pendentes(
+viewValue VARCHAR(40),
+bloco CHAR(1),
+num int,
+obs VARCHAR(500)
+);
+
+CREATE TABLE entregas_concluidas(
+viewValue VARCHAR(40),
+bloco CHAR(1),
+num int,
+obs VARCHAR(500),
+hora TIME,
+dia DATE);
+
+CREATE TABLE noticias(
+servicos VARCHAR(500),
+residentes VARCHAR(500),
+entregas VARCHAR(500));
+
+INSERT INTO moradores(nome,id) VALUES ('test',default);
+SELECT * FROM moradores;
+
+select id from moradores WHERE nome='teste2';
+
+INSERT INTO entregas_concluidas VALUES ('Teste','C',18,'',now(),now());
+
+
+SELECT * from moradores;
+INSERT INTO entrada (nome, tipo, bloco, num, hora, dia) VALUES ('julio','Servico','C',123,now(),now());
+	
+
+DESCRIBE endereco;
+DESCRIBE entregas_pendentes;
+
+SELECT m.id, m.nome, e.bloco, e.num, e.ramal FROM moradores as m left join endereco as e on m.id = e.id_morador;
+	
+SELECT * FROM endereco;
+SELECT * FROM entrada;
+SELECT * FROM entrada WHERE tipo='Residente' AND bloco='H';
+SELECT * FROM saida;
+SELECT * FROM entregas_concluidas;
+SELECT * FROM entregas_pendentes;
+
+
+INSERT INTO moradores (id,nome) VALUES (default,'julio');
+INSERT INTO endereco (id_morador, bloco, num, ramal) VALUES (1,'C',18,'12345');
+
+DELETE FROM entrada;
+DELETE FROM saida;
+DELETE FROM entregas_concluidas;
+DELETE from entregas_pendentes;
+DELETE FROM moradores;
+DELETE FROM endereco;
+
+
+
 
