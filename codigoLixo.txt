@@ -59,9 +59,9 @@ hora TIME,
 dia DATE);
 
 CREATE TABLE noticias(
-servicos VARCHAR(500),
-residentes VARCHAR(500),
-entregas VARCHAR(500));
+dados VARCHAR(500),
+id INT NOT NULL auto_increment primary KEY,
+dia DATE);
 
 INSERT INTO moradores(nome,id) VALUES ('test',default);
 SELECT * FROM moradores;
@@ -97,7 +97,4 @@ DELETE FROM entregas_concluidas;
 DELETE from entregas_pendentes;
 DELETE FROM moradores;
 DELETE FROM endereco;
-
-
-
 

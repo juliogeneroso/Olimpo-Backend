@@ -1,21 +1,11 @@
-module.exports = app => {
-    app.post('/alterar',(req,res)=>{
-        let { id, nome, bloco, casa, ramal } = req.body;
-    
-        let registro = {
-        id,
-        nome,
-        bloco,
-        casa,
-        ramal
-        };
-    // console.log(registro);
-        connection.query(`UPDATE moradores SET nome='${registro.nome}',bloco='${registro.bloco}',num=${registro.casa},ramal='${registro.ramal}' WHERE id=${registro.id}`),function(req,res){
-            if(err){
-                return err;
-            }
-        }
+const Moradores = require("../../models/bd_moradores");
 
-        return res.json(registro);
+module.exports = app => {
+    app.patch('/alterar/morador/:id',(req,res) => {
+        
+        const dados = req.body;
+        const id = parseInt(req.params.id);
+
+        Moradores.editar_morador(dados, id, res);
         });
 }

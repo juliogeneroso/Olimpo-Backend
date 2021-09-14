@@ -14,8 +14,10 @@ class Moradores{
 
                     connection.query(sql, dados, (erro, result) => {
                         if(erro){
+
                             console.log(erro);
                         } else{
+
                             res.status(200).json("Sucesso ao cadastrar");
                         }
                     });
@@ -26,12 +28,30 @@ class Moradores{
         });
     }
 
-    editar_morador(){
+    editar_morador(dados, id, res){
 
+        const sql = `UPDATE moradores SET ? WHERE id=${id}`;
+
+        connection.query(sql, dados, (erro, result) => {
+            if(erro){
+                res.status(400).json(erro);
+            }else{
+                res.status(200).json(result);
+            }
+        });
     }
 
-    deletar_morador(){
+    deletar_morador(id, res){
 
+        const sql = `DELETE FROM moradores WHERE id=${id}`;
+
+        connection.query(sql, (erro, result ) => {
+            if(erro){
+                res.status(400).json(erro);
+            }else{
+                res.status(200).json(result);
+            }
+        })
     }
 
     exibir_all_moradores(res){

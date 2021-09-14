@@ -1,19 +1,10 @@
+const Moradores = require("../../models/bd_moradores");
+
 module.exports = app => {
-    app.post('/excluir',(req,res)=>{
-    let { id } = req.body;
+    app.delete('/deletar/morador/:id',(req,res) => {
+        
+        const id = parseInt(req.params.id);
 
-    let registro = {
-        id
-    };
-   // console.log("Pendentes" + JSON.stringify(registro));
-
-    connection.query(`DELETE FROM moradores WHERE id=${registro.id}`,function(err, result){
-        if(err){
-            return err;
-        }
-      //  console.log("salvou");
-    return res.json(registro);
-    });
-    
-    });
+        Moradores.deletar_morador(id, res);
+        });
 }
