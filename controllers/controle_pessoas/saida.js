@@ -4,7 +4,7 @@ module.exports = app => {
   app.post('/registro/saida',(req,res)=>{
     const saida_pessoa = req.body;
 
-    Pessoas.registo_saida(saida_pessoa);
+    Pessoas.registo_saida(saida_pessoa, res);
     res.send("Saida salva com sucesso");   
   })
 }

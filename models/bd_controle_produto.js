@@ -10,10 +10,10 @@ class Produto{
 
         connection.query(sql, pendente, (erro,result)=>{
             if(erro){
-                console.log('erro');
-            }else{
-                console.log(result);
-            }
+                res.status(400).send({retorno:[{status:"400",msg:"Erro ao cadastrar item",detalhe:erro}]});
+           }else{
+                res.status(200).send({retorno:[{status:"200",msg:"Cadastro realizado com sucesso",detalhe:result}]});
+           }
         });
     }
 
@@ -26,10 +26,10 @@ class Produto{
 
         connection.query(sql, concluido, (erro,result)=>{
             if(erro){
-                console.log(erro);
-            }else{
-                console.log(result);
-            }
+                res.status(400).send({retorno:[{status:"400",msg:"Erro ao cadastrar item",detalhe:erro}]});
+           }else{
+                res.status(200).send({retorno:[{status:"200",msg:"Cadastro realizado com sucesso",detalhe:result}]});
+           }
         });
     }
 

@@ -2,7 +2,7 @@ const connection = require('../infraestrutura/connection');
 const controle_data_hora = require('../infraestrutura/data');
 
 class Pessoas{
-    registro_entrada(entrada){
+    registro_entrada(entrada, res){
         
         entrada["hora"]=controle_data_hora.hora();
         entrada["dia"]=controle_data_hora.data();
@@ -11,14 +11,14 @@ class Pessoas{
 
         connection.query(sql, entrada, (erro,result)=>{
             if(erro){
-                console.log(erro);
+                 res.status(400).send({retorno:[{status:"400",msg:"Erro ao cadastrar item",detalhe:erro}]});
             }else{
-                console.log(result);
+                 res.status(200).send({retorno:[{status:"200",msg:"Cadastro realizado com sucesso",detalhe:result}]});
             }
-        })
+        }) 
     }
 
-    registo_saida(saida){
+    registo_saida(saida, res){
 
         saida["hora"]=controle_data_hora.hora();
         saida["dia"]=controle_data_hora.data();
@@ -27,10 +27,10 @@ class Pessoas{
 
         connection.query(sql, saida, (erro, result)=>{
             if(erro){
-                console.log(erro);
-            }else{
-                console.log(result);
-            }
+                res.status(400).send({retorno:[{status:"400",msg:"Erro ao cadastrar item",detalhe:erro}]});
+           }else{
+                res.status(200).send({retorno:[{status:"200",msg:"Cadastro realizado com sucesso",detalhe:result}]});
+           }
         })
     }
 
