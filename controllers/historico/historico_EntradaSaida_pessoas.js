@@ -11,18 +11,6 @@ module.exports = app => {
         Pessoas.exibir_todas_saidas(res);
     });
 
-    /*app.get("/:registro/:tipo/:bloco/:num/:hora/:dia",(req,res) => {
-        
-        const registro = req.params.registro;
-        const tipo = req.params.tipo;
-        const bloco = req.params.bloco;
-        const num = parseInt(req.params.num);
-        const hora = req.params.hora;
-        const dia = req.params.dia;
-
-        Pessoas.filtro_tipo_bloco_num_hora_dia(registro, tipo, bloco, num, hora, dia, res);
-    });*/
-
     app.get("/entrada/:tipo/:bloco/:num", (req, res) => {
         
         const tipo = req.params.tipo;

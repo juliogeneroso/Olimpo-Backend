@@ -2,7 +2,7 @@ const connection = require('../infraestrutura/connection');
 const controle_data_hora = require('../infraestrutura/data');
 
 class Produto{
-    produto_pendente(pendente){
+    produto_pendente(pendente, res){
     
         const sql = 'INSERT INTO entregas_pendentes SET ?'
         
@@ -10,31 +10,51 @@ class Produto{
 
         connection.query(sql, pendente, (erro,result)=>{
             if(erro){
-                res.status(400).send({retorno:[{status:"400",msg:"Erro ao cadastrar item",detalhe:erro}]});
+                res.status(400)
+                .send({
+                    status:"400",
+                    msg:"Erro ao cadastrar item",
+                    detalhe:erro
+                });
            }else{
-                res.status(200).send({retorno:[{status:"200",msg:"Cadastro realizado com sucesso",detalhe:result}]});
+                res.status(200).send({
+                    status:"200",
+                    msg:"Cadastro realizado com sucesso",
+                    detalhe:result
+                });
            }
         });
     }
 
-    produto_concluido(concluido){
+    produto_concluido(concluido, res){
+
+        console.log(concluido);
 
         concluido['hora'] = controle_data_hora.hora();
         concluido['dia'] = controle_data_hora.data();
 
-        const sql = 'INSERT INTO entregas_concluidas WHERE ?';
+        const sql = 'INSERT INTO entregas_concluidas SET ?';
 
         connection.query(sql, concluido, (erro,result)=>{
             if(erro){
-                res.status(400).send({retorno:[{status:"400",msg:"Erro ao cadastrar item",detalhe:erro}]});
+               /* res.status(400).send({
+                    status:"400",
+                    msg:"Erro ao cadastrar item",
+                    detalhe:erro
+                });*/
            }else{
-                res.status(200).send({retorno:[{status:"200",msg:"Cadastro realizado com sucesso",detalhe:result}]});
+              /*  res.status(200).send({status:"200",
+                msg:"Cadastro realizado com sucesso",
+                detalhe:result
+            });*/
+            console.log(result);
            }
         });
     }
 
     excluir_pendentes(excluir){
 
+        console.log(excluir);
         const sql = `DELETE FROM entregas_pendentes WHERE viewValue='${excluir.viewValue}' AND bloco='${excluir.bloco}' AND num=${excluir.num}`;
 
         connection.query(sql, (erro,result)=>{

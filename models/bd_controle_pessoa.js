@@ -11,9 +11,19 @@ class Pessoas{
 
         connection.query(sql, entrada, (erro,result)=>{
             if(erro){
-                 res.status(400).send({retorno:[{status:"400",msg:"Erro ao cadastrar item",detalhe:erro}]});
+                 res.status(400)
+                    .send({
+                        status:"400",
+                        msg:"Erro ao cadastrar item",
+                        detalhe:erro
+                        });
             }else{
-                 res.status(200).send({retorno:[{status:"200",msg:"Cadastro realizado com sucesso",detalhe:result}]});
+                  res.status(200)
+                    .send({
+                        status:"200",
+                        msg:"Cadastro realizado com sucesso",
+                        detalhe:result
+                        });
             }
         }) 
     }
@@ -27,11 +37,21 @@ class Pessoas{
 
         connection.query(sql, saida, (erro, result)=>{
             if(erro){
-                res.status(400).send({retorno:[{status:"400",msg:"Erro ao cadastrar item",detalhe:erro}]});
+                res.status(400)
+                   .send({
+                       status:"400",
+                       msg:"Erro ao cadastrar item",
+                       detalhe:erro
+                       });
            }else{
-                res.status(200).send({retorno:[{status:"200",msg:"Cadastro realizado com sucesso",detalhe:result}]});
+                 res.status(200)
+                   .send({
+                       status:"200",
+                       msg:"Cadastro realizado com sucesso",
+                       detalhe:result
+                       });
            }
-        })
+       }) 
     }
 
     exibir_todas_entradas(res){
@@ -57,19 +77,6 @@ class Pessoas{
             }
         })
     }
-
-    /*filtro_tipo_bloco_num_hora_dia(registro, tipo, bloco, num, hora, dia, res){
-        
-        const sql = `SELECT * FROM ${registro} WHERE tipo='${tipo}' AND bloco='${bloco}' AND num=${num} AND hora=${hora} AND dia=${dia}`;
-
-        connection.query(sql, (erro, result) => {
-            if(erro){
-                res.status(400).json(erro);
-            }else{
-                res.status(200).json(result);
-            }
-        })
-    }*/
 
     filtro_entrada_tipo_bloco_num(tipo, bloco, num, res){
         

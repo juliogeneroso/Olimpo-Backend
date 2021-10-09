@@ -14,15 +14,26 @@ class Moradores{
 
                     connection.query(sql, dados, (erro, result) => {
                         if(erro){
-
-                            console.log(erro);
+                            res.status(400)
+                            .send({
+                                status:"400",
+                                msg:"Erro ao cadastrar item",
+                                detalhe:erro
+                            });
                         } else{
-
-                            res.status(200).json("Sucesso ao cadastrar");
+                            res.status(200).send({
+                                status:"200",
+                                msg:"Cadastro realizado com sucesso",
+                                detalhe:result
+                            });
                         }
                     });
                 }else{
-                    res.status(203).json("Cliente já cadastrado");
+                    res.status(203).send({
+                        status:"203",
+                        msg:"Residente já cadastrado",
+                        detalhe:result
+                    });
                 }
             }
         });

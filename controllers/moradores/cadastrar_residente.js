@@ -6,7 +6,5 @@ module.exports = app => {
     const dados_cadastro = req.body;
 
     Moradores.cadastro(dados_cadastro, res);
-
-   // res.send('Cadastro realizado com sucesso');
   });
 }

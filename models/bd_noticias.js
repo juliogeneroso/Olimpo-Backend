@@ -10,9 +10,17 @@ class Noticias{
 
         connection.query(sql, noticia, (erro, result) => {
             if(erro){
-                res.status(400).json(erro);
+                res.status(400).send({
+                    status:"400",
+                    msg:"Erro ao cadastrar notícia",
+                    detalhe:erro
+                });
             }else{
-                res.status(200).json(result);
+                res.status(200).send({
+                    status:"200",
+                    msg:"Noticia cadastrada com sucesso",
+                    detalhe:result
+                });
             }
         });
     }
