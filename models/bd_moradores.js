@@ -3,17 +3,27 @@ const connection = require('../infraestrutura/connection');
 class Moradores{
     cadastro(dados, res){
         
+        console.log(dados);
+
         const sql_select = `SELECT * FROM moradores WHERE nome='${dados.nome}' AND bloco='${dados.bloco}' AND num=${dados.num}`;
 
         connection.query(sql_select, (erro, result) => {
             if(erro){
-                console.log(erro);
+                res.status(400)
+                .send({
+                    status:"400",
+                    msg:"Erro ao cadastrar item",
+                    detalhe:erro
+                });
             } else{
+               // console.log("Não existe");
                 if(result.length == 0){
+
                     const sql = 'INSERT INTO moradores set ?'
 
                     connection.query(sql, dados, (erro, result) => {
                         if(erro){
+                            //console.log("Não cadastrou");
                             res.status(400)
                             .send({
                                 status:"400",
@@ -45,9 +55,19 @@ class Moradores{
 
         connection.query(sql, dados, (erro, result) => {
             if(erro){
-                res.status(400).json(erro);
-            }else{
-                res.status(200).json(result);
+                res.status(400)
+                .send({
+                    status:"400",
+                    msg:"Erro ao alterar item",
+                    detalhe:erro
+                    });
+            } else {
+                res.status(200)
+                .send({
+                    status:"200",
+                    msg:"Item alterado com sucesso",
+                    detalhe:result
+                    });
             }
         });
     }
@@ -58,11 +78,21 @@ class Moradores{
 
         connection.query(sql, (erro, result ) => {
             if(erro){
-                res.status(400).json(erro);
+                res.status(400)
+                .send({
+                    status:"400",
+                    msg:"Erro ao deletar item",
+                    detalhe:erro
+                    });
             }else{
-                res.status(200).json(result);
+                res.status(200)
+                .send({
+                    status:"200",
+                    msg:"Item deletado com sucesso",
+                    detalhe:result
+                    });
             }
-        })
+        });
     }
 
     exibir_all_moradores(res){
