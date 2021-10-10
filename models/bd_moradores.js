@@ -3,7 +3,7 @@ const connection = require('../infraestrutura/connection');
 class Moradores{
     cadastro(dados, res){
         
-        console.log(dados);
+       // console.log(dados);
 
         const sql_select = `SELECT * FROM moradores WHERE nome='${dados.nome}' AND bloco='${dados.bloco}' AND num=${dados.num}`;
 
@@ -39,7 +39,8 @@ class Moradores{
                         }
                     });
                 }else{
-                    res.status(203).send({
+                    console.log("ja cadastrado");
+                    res.status(200).send({
                         status:"203",
                         msg:"Residente já cadastrado",
                         detalhe:result
@@ -97,7 +98,7 @@ class Moradores{
 
     exibir_all_moradores(res){
 
-        const sql = 'SELECT * FROM moradores';
+        const sql = 'SELECT * FROM moradores ORDER BY id';
 
         connection.query(sql, (erro, result) => {
             if(erro){

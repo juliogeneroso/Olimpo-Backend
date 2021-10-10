@@ -6,7 +6,7 @@ class Produto{
     
         const sql = 'INSERT INTO entregas_pendentes SET ?'
         
-        console.log(pendente);
+        //console.log(pendente);
 
         connection.query(sql, pendente, (erro,result)=>{
             if(erro){
@@ -47,14 +47,14 @@ class Produto{
                 msg:"Cadastro realizado com sucesso",
                 detalhe:result
             });
-            console.log(result);
+            //console.log(result);
            }
         });
     }
 
     excluir_pendentes(excluir){
 
-        console.log(excluir);
+       // console.log(excluir);
         const sql = `DELETE FROM entregas_pendentes WHERE viewValue='${excluir.viewValue}' AND bloco='${excluir.bloco}' AND num=${excluir.num}`;
 
         connection.query(sql, (erro,result)=>{
