@@ -37,16 +37,16 @@ class Produto{
 
         connection.query(sql, concluido, (erro,result)=>{
             if(erro){
-               /* res.status(400).send({
+                res.status(400).send({
                     status:"400",
                     msg:"Erro ao cadastrar item",
                     detalhe:erro
-                });*/
+                });
            }else{
-              /*  res.status(200).send({status:"200",
+                res.status(200).send({status:"200",
                 msg:"Cadastro realizado com sucesso",
                 detalhe:result
-            });*/
+            });
             console.log(result);
            }
         });
@@ -81,7 +81,7 @@ class Produto{
 
     exibir_all_produtos_concluidos(res){
         
-        const sql = 'SELECT * FROM entregas_concluidas';
+        const sql = 'SELECT * FROM entregas_concluidas ORDER BY dia desc, hora desc';
 
         connection.query(sql,(erro,result)=>{
             if(erro){
@@ -94,7 +94,7 @@ class Produto{
 
     filtro_pendentes_viewValue_bloco_num(viewValue, bloco, num, res){
 
-        const sql = `SELECT * FROM entregas_pendentes WHERE viewValue='${viewValue}' AND bloco='${bloco}' AND num=${num}`;
+        const sql = `SELECT * FROM entregas_pendentes WHERE viewValue='${viewValue}' AND bloco='${bloco}' AND num=${num} ORDER BY dia desc, hora desc ORDER BY dia desc, hora desc`;
 
         connection.query(sql, (erro, result) => {
             if(erro){
@@ -107,7 +107,7 @@ class Produto{
 
     filtro_pendentes_viewValue_bloco(viewValue, bloco, res){
 
-        const sql = `SELECT * FROM entregas_pendentes WHERE viewValue='${viewValue}' AND bloco='${bloco}'`;
+        const sql = `SELECT * FROM entregas_pendentes WHERE viewValue='${viewValue}' AND bloco='${bloco} ORDER BY dia desc, hora desc'`;
 
         connection.query(sql, (erro, result) => {
             if(erro){
@@ -120,7 +120,7 @@ class Produto{
 
     filtro_pendentes_viewValue(viewValue, res){
 
-        const sql = `SELECT * FROM entregas_pendentes WHERE viewValue='${viewValue}'`;
+        const sql = `SELECT * FROM entregas_pendentes WHERE viewValue='${viewValue} ORDER BY dia desc, hora desc'`;
 
         connection.query(sql, (erro, result) => {
             if(erro){
@@ -133,7 +133,7 @@ class Produto{
 
     filtro_concluidas_viewValue_bloco_num(viewValue, bloco, num, res){
 
-        const sql = `SELECT * FROM entregas_concluidas WHERE viewValue='${viewValue}' AND bloco='${bloco}' AND num=${num}`;
+        const sql = `SELECT * FROM entregas_concluidas WHERE viewValue='${viewValue}' AND bloco='${bloco}' AND num=${num} ORDER BY dia desc, hora desc`;
 
         connection.query(sql, (erro, result) => {
             if(erro){
@@ -146,7 +146,7 @@ class Produto{
 
     filtro_concluidas_viewValue_bloco(viewValue, bloco, res){
 
-        const sql = `SELECT * FROM entregas_concluidas WHERE viewValue='${viewValue}' AND bloco='${bloco}'`;
+        const sql = `SELECT * FROM entregas_concluidas WHERE viewValue='${viewValue}' AND bloco='${bloco} ORDER BY dia desc, hora desc'`;
 
         connection.query(sql, (erro, result) => {
             if(erro){
@@ -159,7 +159,7 @@ class Produto{
 
     filtro_concluidas_viewValue(viewValue, res){
 
-        const sql = `SELECT * FROM entregas_concluidas WHERE viewValue='${viewValue}'`;
+        const sql = `SELECT * FROM entregas_concluidas WHERE viewValue='${viewValue} ORDER BY dia desc, hora desc'`;
 
         connection.query(sql, (erro, result) => {
             if(erro){

@@ -26,7 +26,7 @@ class Tabelas {
                 console.log('Sucesso');
             }
         });
-        const sql3 = 'CREATE TABLE IF NOT EXISTS entregas_pendentes(viewValue VARCHAR(40),bloco CHAR(1),num int,obs VARCHAR(500));';
+        const sql3 = 'CREATE TABLE IF NOT EXISTS entregas_pendentes(id INT NOT NULL auto_increment primary KEY,viewValue VARCHAR(40),bloco CHAR(1),num int,obs VARCHAR(500));';
 
         this.connection.query(sql3, (erro, result) => {
             if(erro){
@@ -35,7 +35,7 @@ class Tabelas {
                 console.log('Sucesso');
             }
         });
-        const sql4 = 'CREATE TABLE IF NOT EXISTS entregas_concluidas(viewValue VARCHAR(40),bloco CHAR(1),num int,obs VARCHAR(500),hora TIME,dia DATE);';
+        const sql4 = 'CREATE TABLE IF NOT EXISTS entregas_concluidas(id INT NOT NULL primary KEY,viewValue VARCHAR(40),bloco CHAR(1),num int,obs VARCHAR(500),hora TIME,dia DATE);';
 
         this.connection.query(sql4, (erro, result) => {
             if(erro){

@@ -27,7 +27,7 @@ class Noticias{
 
     exibir_noticias(res){
 
-        const sql = `SELECT * from noticias`;
+        const sql = `SELECT * from noticias ORDER BY dia desc`;
 
         connection.query(sql, (erro, result) => {
             if(erro){

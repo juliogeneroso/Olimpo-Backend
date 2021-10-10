@@ -55,7 +55,7 @@ class Pessoas{
     }
 
     exibir_todas_entradas(res){
-        const sql = 'SELECT * FROM entrada'
+        const sql = 'SELECT * FROM entrada ORDER BY dia desc, hora desc'
 
         connection.query(sql, (erro, result)=>{
             if(erro){
@@ -67,46 +67,46 @@ class Pessoas{
     }
 
     exibir_todas_saidas(res){
-        const sql = 'SELECT * FROM saida'
+        const sql = 'SELECT * FROM saida ORDER BY dia desc, hora desc'
 
         connection.query(sql, (erro, result)=>{
             if(erro){
                 res.status(400).json(erro);
             }else{
-                res.status(200).json(result);
+                res.status(200).json(result.reverse());
             }
         })
     }
 
     filtro_entrada_tipo_bloco_num(tipo, bloco, num, res){
         
-        const sql = `SELECT * FROM entrada WHERE tipo='${tipo}' AND bloco='${bloco}' AND num=${num}`;
+        const sql = `SELECT * FROM entrada WHERE tipo='${tipo}' AND bloco='${bloco}' AND num=${num} ORDER BY dia desc, hora desc`;
 
         connection.query(sql, (erro, result) => {
             if(erro){
                 res.status(400).json(erro);
             }else{
-                res.status(200).json(result);
+                res.status(200).json(result.reverse());
             }
         })
     }
 
     filtro_entrada_tipo_bloco(tipo, bloco, res){
         
-        const sql = `SELECT * FROM entrada WHERE tipo='${tipo}' AND bloco='${bloco}'`;
+        const sql = `SELECT * FROM entrada WHERE tipo='${tipo}' AND bloco='${bloco} ORDER BY dia desc, hora desc'`;
 
         connection.query(sql, (erro, result)=>{
             if(erro){
                 res.status(400).json(erro);
             }else{
-                res.status(200).json(result);
+                res.status(200).json(result.reverse());
             }
         })
     }
 
     filtro_entrada_tipo(registro, tipo, res){
         
-        const sql = `SELECT * FROM entrada WHERE tipo='${tipo}'`;
+        const sql = `SELECT * FROM entrada WHERE tipo='${tipo} ORDER BY dia desc, hora desc'`;
 
         connection.query(sql, (erro, result) => {
             if(erro){
@@ -119,7 +119,7 @@ class Pessoas{
 
     filtro_saida_tipo_bloco_num(tipo, bloco, num, res){
         
-        const sql = `SELECT * FROM saida WHERE tipo='${tipo}' AND bloco='${bloco}' AND num=${num}`;
+        const sql = `SELECT * FROM saida WHERE tipo='${tipo}' AND bloco='${bloco}' AND num=${num} ORDER BY dia desc, hora desc`;
 
         connection.query(sql, (erro, result) => {
             if(erro){
@@ -132,7 +132,7 @@ class Pessoas{
 
     filtro_entrada_tipo_bloco(tipo, bloco, res){
         
-        const sql = `SELECT * FROM saida WHERE tipo='${tipo}' AND bloco='${bloco}'`;
+        const sql = `SELECT * FROM saida WHERE tipo='${tipo}' AND bloco='${bloco} ORDER BY dia desc, hora desc'`;
 
         connection.query(sql, (erro, result)=>{
             if(erro){
@@ -145,7 +145,7 @@ class Pessoas{
 
     filtro_saida_tipo(registro, tipo, res){
         
-        const sql = `SELECT * FROM saida WHERE tipo='${tipo}'`;
+        const sql = `SELECT * FROM saida WHERE tipo='${tipo} ORDER BY dia desc, hora desc'`;
 
         connection.query(sql, (erro, result) => {
             if(erro){
