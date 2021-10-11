@@ -28,7 +28,7 @@ class Produto{
 
     produto_concluido(concluido, res){
 
-        console.log(concluido);
+       // console.log(concluido);
 
         concluido['hora'] = controle_data_hora.hora();
         concluido['dia'] = controle_data_hora.data();
@@ -54,8 +54,8 @@ class Produto{
 
     excluir_pendentes(excluir){
 
-       // console.log(excluir);
-        const sql = `DELETE FROM entregas_pendentes WHERE viewValue='${excluir.viewValue}' AND bloco='${excluir.bloco}' AND num=${excluir.num}`;
+        //console.log(excluir);
+        const sql = `DELETE FROM entregas_pendentes WHERE id=${excluir.id} AND viewValue='${excluir.viewValue}' AND bloco='${excluir.bloco}' AND num=${excluir.num}`;
 
         connection.query(sql, (erro,result)=>{
             if(erro){
