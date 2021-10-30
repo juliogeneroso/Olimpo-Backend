@@ -1,6 +1,12 @@
 const Pessoas = require('../../models/bd_controle_pessoa');
 
 module.exports = app => {
+    
+    app.get("/temporaria/entrada", (req, res) => {
+
+        Pessoas.exibir_todas_entradas_temp(res);
+    });
+
     app.get("/entrada", (req, res) => {
 
         Pessoas.exibir_todas_entradas(res);

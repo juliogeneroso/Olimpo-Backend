@@ -62,6 +62,15 @@ class Tabelas {
                 console.log('Sucesso');
             }
         });
+        const sql7 = 'CREATE TABLE IF NOT EXISTS entrada_temporaria(nome VARCHAR(100),tipo VARCHAR(20),bloco CHAR(1),num INT);';
+
+        this.connection.query(sql7, (erro, result) => {
+            if(erro){
+                console.log('Erro ao criar tabela');
+            }else{
+                console.log('Sucesso');
+            }
+        });
     }
 }
 
