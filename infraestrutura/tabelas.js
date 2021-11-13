@@ -14,7 +14,7 @@ class Tabelas {
             if(erro){
                 console.log('Erro ao criar tabela');
             }else{
-                console.log('Sucesso');
+                console.log('Tabela Entrada - Sucesso');
             }
         });
         const sql2 = 'CREATE TABLE IF NOT EXISTS saida(nome VARCHAR(100),tipo VARCHAR(20),bloco CHAR(1),num INT,hora TIME,dia DATE);';
@@ -23,7 +23,7 @@ class Tabelas {
             if(erro){
                 console.log('Erro ao criar tabela');
             }else{
-                console.log('Sucesso');
+                console.log('Tabela Saida - Sucesso');
             }
         });
         const sql3 = 'CREATE TABLE IF NOT EXISTS entregas_pendentes(id INT NOT NULL auto_increment primary KEY,viewValue VARCHAR(40),bloco CHAR(1),num int,obs VARCHAR(500));';
@@ -32,7 +32,7 @@ class Tabelas {
             if(erro){
                 console.log('Erro ao criar tabela');
             }else{
-                console.log('Sucesso');
+                console.log('Tabela Entregas Pendentes - Sucesso');
             }
         });
         const sql4 = 'CREATE TABLE IF NOT EXISTS entregas_concluidas(id INT NOT NULL primary KEY,viewValue VARCHAR(40),bloco CHAR(1),num int,obs VARCHAR(500),hora TIME,dia DATE);';
@@ -40,8 +40,8 @@ class Tabelas {
         this.connection.query(sql4, (erro, result) => {
             if(erro){
                 console.log('Erro ao criar tabela');
-            }else{
-                console.log('Sucesso');
+            }else{ 
+                console.log('Tabela Entregas Concluidas - Sucesso');
             }
         });
         const sql5 = 'CREATE TABLE IF NOT EXISTS moradores(nome VARCHAR(50) NOT NULL,id INT NOT NULL auto_increment primary KEY,bloco CHAR(1),num int);';
@@ -50,7 +50,7 @@ class Tabelas {
             if(erro){
                 console.log('Erro ao criar tabela');
             }else{
-                console.log('Sucesso');
+                console.log('Tabela Moradores - Sucesso');
             }
         });
         const sql6 = 'CREATE TABLE IF NOT EXISTS noticias(dados VARCHAR(500) NOT NULL,id INT NOT NULL auto_increment primary KEY,dia DATE);';
@@ -59,7 +59,7 @@ class Tabelas {
             if(erro){
                 console.log('Erro ao criar tabela');
             }else{
-                console.log('Sucesso');
+                console.log('Tabela Noticias - Sucesso');
             }
         });
         const sql7 = 'CREATE TABLE IF NOT EXISTS entrada_temporaria(nome VARCHAR(100),tipo VARCHAR(20),bloco CHAR(1),num INT);';
@@ -68,7 +68,16 @@ class Tabelas {
             if(erro){
                 console.log('Erro ao criar tabela');
             }else{
-                console.log('Sucesso');
+                console.log('Tabela Entredas Temporarias - Sucesso');
+            }
+        });
+        const sql8 = 'CREATE TABLE IF NOT EXISTS login(id VARCHAR(11) primary key NOT NULL,senha VARCHAR(50) NOT NULL, admin BOOLEAN NOT NULL);';
+
+        this.connection.query(sql8, (erro, result) => {
+            if(erro){
+                console.log('Erro ao criar tabela');
+            }else{
+                console.log('Tabela Login - Sucesso');
             }
         });
     }

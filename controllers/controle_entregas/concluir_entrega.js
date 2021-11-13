@@ -6,7 +6,6 @@ module.exports = app => {
         
         Produto.produto_concluido(entrega_concluida, res);
         Produto.excluir_pendentes(entrega_concluida, res);
-        
     })
 }
 
