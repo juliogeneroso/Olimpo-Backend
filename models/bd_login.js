@@ -35,7 +35,7 @@ class Login{
 
     consulta(res){
 
-        const sql_select = `SELECT id,nome,admin FROM login'`;
+        const sql_select = `SELECT id,nome,admin FROM login`;
 
         connection.query(sql_select, (erro, result) => {
             if(erro){

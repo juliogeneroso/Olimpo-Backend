@@ -15,7 +15,7 @@ module.exports = app => {
     Entrar.cadastrar(dados_login, res);
   });
 
-  app.get('/consulta/porteiros',(req, res) => {
+  app.get('/porteiros',(req, res) => {
 
     Entrar.consulta(res);
   })
