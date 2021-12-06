@@ -71,7 +71,7 @@ class Tabelas {
                 console.log('Tabela Entredas Temporarias - Sucesso');
             }
         });
-        const sql8 = 'CREATE TABLE IF NOT EXISTS login(id VARCHAR(11) primary key NOT NULL,senha VARCHAR(50) NOT NULL, admin BOOLEAN NOT NULL);';
+        const sql8 = 'CREATE TABLE IF NOT EXISTS login(id VARCHAR(11) primary key NOT NULL,nome VARCHAR(50) NOT NULL, senha VARCHAR(50) NOT NULL, admin BOOLEAN DEFAULT FALSE);';
 
         this.connection.query(sql8, (erro, result) => {
             if(erro){

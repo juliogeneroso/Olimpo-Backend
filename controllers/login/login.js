@@ -7,4 +7,16 @@ module.exports = app => {
 
     Entrar.login(dados_login,res);
   });
+
+  app.post('/cadastrar/porteiro',(req, res) => {
+    
+    const dados_login = req.body;
+
+    Entrar.cadastrar(dados_login, res);
+  });
+
+  app.get('/consulta/porteiros',(req, res) => {
+
+    Entrar.consulta(res);
+  })
 }
