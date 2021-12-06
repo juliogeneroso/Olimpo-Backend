@@ -92,6 +92,29 @@ class Login{
             }
         });
     }
+
+    deletar_porteiro(id, res){
+
+        const sql = `DELETE FROM login WHERE id=${id}`;
+
+        connection.query(sql, (erro, result ) => {
+            if(erro){
+                res.status(400)
+                .send({
+                    status:"400",
+                    msg:"Erro ao deletar item",
+                    detalhe:erro
+                    });
+            }else{
+                res.status(200)
+                .send({
+                    status:"200",
+                    msg:"Item deletado com sucesso",
+                    detalhe:result
+                    });
+            }
+        });
+    }
 }
 module.exports = new Login
    

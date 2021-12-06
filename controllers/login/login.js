@@ -18,5 +18,13 @@ module.exports = app => {
   app.get('/porteiros',(req, res) => {
 
     Entrar.consulta(res);
-  })
+  });
+
+  app.delete('/deletar/porteiro/:id',(req,res) => {
+        
+    const id = parseInt(req.params.id);
+
+    Entrar.deletar_porteiro(id, res);
+    });
 }
+
