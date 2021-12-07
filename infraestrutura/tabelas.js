@@ -80,6 +80,15 @@ class Tabelas {
                 console.log('Tabela Login - Sucesso');
             }
         });
+        const sql9 = 'CREATE TABLE IF NOT EXISTS data(reservaid INT NOT NULL primary key auto_increment, id INT NOT NULL, nome VARCHAR(50) NOT NULL, dia INT NOT NULL, mes INT NOT NULL, ano INT NOT NULL, duracao INT NOT NULL, quantPessoas INT NOT NULL);';
+
+        this.connection.query(sql9, (erro, result) => {
+            if(erro){
+                console.log('Erro ao criar tabela');
+            }else{
+                console.log('Tabela Data - Sucesso');
+            }
+        });
     }
 }
 
