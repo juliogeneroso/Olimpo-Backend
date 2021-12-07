@@ -28,7 +28,7 @@ class Reservas{
 
     exibir_reservas(res){
 
-        const sql = `SELECT * from data ORDER BY dia,mes,ano desc`;
+        const sql = `SELECT * from data ORDER BY dia desc,mes desc,ano desc`;
 
         connection.query(sql, (erro, result) => {
             if(erro){
@@ -41,13 +41,13 @@ class Reservas{
 
     buscar_disponibilidade(dia, mes, ano, res){
 
-        const sql = `SELECT * from data WHERE dia=${dia},mes=${mes},ano=${ano}`;
+        const sql = `SELECT * from data WHERE dia=${dia} AND mes=${mes} AND ano=${ano}`;
 
         connection.query(sql, (erro, result) => {
             if(erro){
                 res.status(400).json(erro);
             }else{
-                res.status(200).json(result);
+                res.status(200).json(result);   
             }
         });
     }
