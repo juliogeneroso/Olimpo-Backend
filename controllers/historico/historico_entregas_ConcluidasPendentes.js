@@ -11,16 +11,25 @@ module.exports = app => {
         Produto.exibir_all_produtos_pendentes(res);
     });
 
-    app.get("/entregas/pendentes/:viewValue/:bloco/:num", (req, res) => {
+    app.get("/pendentes/:bloco/:num", (req, res) => {
 
-        const viewValue = req.params.viewValue;
+        console.log("pendentes");
+        
         const bloco = req.params.bloco;
         const num = parseInt(req.params.num);
 
-        Produto.filtro_pendentes_viewValue_bloco_num(viewValue, bloco, num, res);
+        Produto.filtro_pendentes_viewValue_bloco_num(bloco, num, res);
     });
 
-    app.get("/entregas/pendentes/:viewValue/:bloco", (req, res) => {
+    app.get("/concluidas/:bloco/:num", (req, res) => {
+
+        const bloco = req.params.bloco;
+        const num = parseInt(req.params.num);
+
+        Produto.filtro_concluidas_viewValue_bloco_num(bloco, num, res);
+    });
+
+    /*app.get("/entregas/pendentes/:viewValue/:bloco", (req, res) => {
 
         const viewValue = req.params.viewValue;
         const bloco = req.params.bloco;
@@ -57,5 +66,5 @@ module.exports = app => {
         const viewValue = req.params.viewValue;
     
         Produto.filtro_concluidas_viewValue(viewValue, res);
-    });
+    });*/
 }

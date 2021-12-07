@@ -17,7 +17,7 @@ module.exports = app => {
         Pessoas.exibir_todas_saidas(res);
     });
 
-    app.get("/entrada/:tipo/:bloco/:num", (req, res) => {
+    /*app.get("/entrada/:tipo/:bloco/:num", (req, res) => {
         
         const tipo = req.params.tipo;
         const bloco = req.params.bloco;
@@ -25,17 +25,26 @@ module.exports = app => {
         
         
         Pessoas.filtro_tipo_bloco_num(tipo, bloco, num, res);
-    });
+    });*/
 
-    app.get("/entrada/:tipo/:bloco", (req, res) => {
+    app.get("/entrada/:bloco/:num", (req, res) => {
  
-        const tipo = req.params.tipo;
+        console.log("entrou");
+        
         const bloco = req.params.bloco;
+        const num = parseInt(req.params.num);
     
-        Pessoas.filtro_tipo_bloco(tipo, bloco, res);
+        Pessoas.filtro_entrada_tipo_bloco(bloco, num, res);
+    });
+    app.get("/saida/:bloco/:num", (req, res) => {
+ 
+        const bloco = req.params.bloco;
+        const num = parseInt(req.params.num);
+    
+        Pessoas.filtro_saida_tipo_bloco(bloco, num, res);
     });
 
-    app.get("/entrada/:tipo", (req, res) => {
+    /*app.get("/entrada/:tipo", (req, res) => {
         
         const tipo = req.params.tipo;
     
@@ -65,5 +74,5 @@ module.exports = app => {
         const tipo = req.params.tipo;
     
         Pessoas.filtro_tipo(tipo, res);
-    });
+    });*/
 }

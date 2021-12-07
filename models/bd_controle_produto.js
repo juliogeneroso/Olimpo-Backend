@@ -92,22 +92,23 @@ class Produto{
         });
     }
 
-    filtro_pendentes_viewValue_bloco_num(viewValue, bloco, num, res){
+    filtro_pendentes_viewValue_bloco_num(bloco, num, res){
 
-        const sql = `SELECT * FROM entregas_pendentes WHERE viewValue='${viewValue}' AND bloco='${bloco}' AND num=${num} ORDER BY dia desc, hora desc ORDER BY dia desc, hora desc`;
+        const sql = `SELECT * FROM entregas_pendentes WHERE bloco='${bloco}' AND num=${num}`;
 
         connection.query(sql, (erro, result) => {
             if(erro){
                 res.status(400).json(erro);
+                console.log(erro);
             }else{
                 res.status(200).json(result);
             }
         });
     }
 
-    filtro_pendentes_viewValue_bloco(viewValue, bloco, res){
+    /*filtro_pendentes_viewValue_bloco(viewValue, bloco, res){
 
-        const sql = `SELECT * FROM entregas_pendentes WHERE viewValue='${viewValue}' AND bloco='${bloco} ORDER BY dia desc, hora desc'`;
+        const sql = `SELECT * FROM entregas_pendentes WHERE viewValue='${viewValue}' AND bloco='${bloco} ORDER BY dia desc, hora desc`;
 
         connection.query(sql, (erro, result) => {
             if(erro){
@@ -120,7 +121,20 @@ class Produto{
 
     filtro_pendentes_viewValue(viewValue, res){
 
-        const sql = `SELECT * FROM entregas_pendentes WHERE viewValue='${viewValue} ORDER BY dia desc, hora desc'`;
+        const sql = `SELECT * FROM entregas_pendentes WHERE viewValue='${viewValue} ORDER BY dia desc, hora desc`;
+
+        connection.query(sql, (erro, result) => {
+            if(erro){
+                res.status(400).json(erro);
+            }else{
+                res.status(200).json(result);
+            }
+        });
+    }*/
+
+    filtro_concluidas_viewValue_bloco_num(bloco, num, res){
+
+        const sql = `SELECT * FROM entregas_concluidas WHERE bloco='${bloco}' AND num=${num} ORDER BY dia desc, hora desc`;
 
         connection.query(sql, (erro, result) => {
             if(erro){
@@ -131,22 +145,9 @@ class Produto{
         });
     }
 
-    filtro_concluidas_viewValue_bloco_num(viewValue, bloco, num, res){
+   /* filtro_concluidas_viewValue_bloco(viewValue, bloco, res){
 
-        const sql = `SELECT * FROM entregas_concluidas WHERE viewValue='${viewValue}' AND bloco='${bloco}' AND num=${num} ORDER BY dia desc, hora desc`;
-
-        connection.query(sql, (erro, result) => {
-            if(erro){
-                res.status(400).json(erro);
-            }else{
-                res.status(200).json(result);
-            }
-        });
-    }
-
-    filtro_concluidas_viewValue_bloco(viewValue, bloco, res){
-
-        const sql = `SELECT * FROM entregas_concluidas WHERE viewValue='${viewValue}' AND bloco='${bloco} ORDER BY dia desc, hora desc'`;
+        const sql = `SELECT * FROM entregas_concluidas WHERE viewValue='${viewValue}' AND bloco='${bloco} ORDER BY dia desc, hora desc`;
 
         connection.query(sql, (erro, result) => {
             if(erro){
@@ -168,7 +169,7 @@ class Produto{
                 res.status(200).json(result);
             }
         });
-    }
+    }*/
 }
 
 module.exports = new Produto

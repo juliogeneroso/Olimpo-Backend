@@ -146,13 +146,15 @@ class Pessoas{
         })
     }
 
-    filtro_entrada_tipo_bloco(tipo, bloco, res){
+    filtro_entrada_tipo_bloco(bloco, num, res){
         
-        const sql = `SELECT * FROM entrada WHERE tipo='${tipo}' AND bloco='${bloco} ORDER BY dia desc, hora desc'`;
+        
+        const sql = `SELECT * FROM entrada WHERE bloco='${bloco}' AND num=${num} ORDER BY dia desc, hora desc`;
 
         connection.query(sql, (erro, result)=>{
             if(erro){
                 res.status(400).json(erro);
+                //console.log(erro);
             }else{
                 res.status(200).json(result);
             }
@@ -185,9 +187,9 @@ class Pessoas{
         })
     }
 
-    filtro_entrada_tipo_bloco(tipo, bloco, res){
+    filtro_saida_tipo_bloco(bloco, num, res){
         
-        const sql = `SELECT * FROM saida WHERE tipo='${tipo}' AND bloco='${bloco} ORDER BY dia desc, hora desc'`;
+        const sql = `SELECT * FROM saida WHERE bloco='${bloco}' AND num=${num} ORDER BY dia desc, hora desc`;
 
         connection.query(sql, (erro, result)=>{
             if(erro){

@@ -8,7 +8,7 @@ module.exports = app => {
 
     app.get("/residentes/filtro/id/:id",(req, res) => {
         
-        const id = req.params.id;
+        const id = parseInt(req.params.id);
 
         Moradores.filtroID(id, res);
     });

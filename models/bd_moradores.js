@@ -110,7 +110,7 @@ class Moradores{
     }
 
     filtroID(id, res){
-        const sql = `SELECT * FROM moradores WHERE id='${id}'`
+        const sql = `SELECT * FROM moradores WHERE id=${id}`
 
         connection.query(sql, (erro, result) => {
             if(erro){
