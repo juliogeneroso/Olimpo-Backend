@@ -53,7 +53,7 @@ class Tabelas {
                 console.log('Tabela Moradores - Sucesso');
             }
         });
-        const sql6 = 'CREATE TABLE IF NOT EXISTS noticias(dados VARCHAR(500) NOT NULL,id INT NOT NULL auto_increment primary KEY,dia DATE);';
+        const sql6 = 'CREATE TABLE IF NOT EXISTS noticias(titulo VARCHAR(60) NOT NULL, dados VARCHAR(500) NOT NULL,id INT NOT NULL auto_increment primary KEY,dia DATE NOT NULL);';
 
         this.connection.query(sql6, (erro, result) => {
             if(erro){
@@ -68,7 +68,7 @@ class Tabelas {
             if(erro){
                 console.log('Erro ao criar tabela');
             }else{
-                console.log('Tabela Entredas Temporarias - Sucesso');
+                console.log('Tabela Entradas Temporarias - Sucesso');
             }
         });
         const sql8 = 'CREATE TABLE IF NOT EXISTS login(id VARCHAR(11) primary key NOT NULL,nome VARCHAR(50) NOT NULL, senha VARCHAR(50) NOT NULL, admin BOOLEAN DEFAULT FALSE);';

@@ -2,7 +2,7 @@ const Noticias = require('../../models/bd_noticias');
 
 module.exports = app => {
     app.get('/exibir/noticias', (req, res) => {
-        
+         
         Noticias.exibir_noticias(res);
     })
 
@@ -13,7 +13,7 @@ module.exports = app => {
         Noticias.buscar_noticia(id, res);
     })
 
-    app.post('/cadastrar/noticia', (req, res) => {
+    app.post('/cadastrar/noticias', (req, res) => {
 
         const noticia = req.body;
 
